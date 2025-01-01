@@ -15,6 +15,8 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
                 .id("hello")
+            Toggle("Dark Mode", isOn: .constant(false))
+                .id(ContentView.Identifiers.darkModeSwitch)
         }
         .padding()
     }
