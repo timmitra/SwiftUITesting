@@ -20,6 +20,12 @@ struct ContentView: View {
     }
 }
 
+extension ContentView {
+    enum Identifiers {
+        static let darkModeSwitch = "darkModeSwitch"
+    }
+}
+
 #Preview {
     ContentView()
 }
