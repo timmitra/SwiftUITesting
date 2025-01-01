@@ -32,4 +32,13 @@ final class SwiftUITestingTests: XCTestCase {
         )
     }
 
+    func test_toggle_whenTapped_switchesToTrue() throws {
+        let sut = ContentView()
+        
+        let toggle = try sut.inspect().find(viewWithId: ContentView.Identifiers.darkModeSwitch).toggle()
+        
+        XCTAssertFalse(try toggle.isOn())
+        try toggle.tap()
+        XCTAssertTrue(try toggle.isOn())
+    }
 }
