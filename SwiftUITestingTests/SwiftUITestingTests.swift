@@ -15,7 +15,7 @@ final class SwiftUITestingTests: XCTestCase {
 
     func testContentView() throws {
         
-        let sut = ContentView()
+        let sut = ContentView(viewModel: .init())
         
         let textView = try sut.inspect().find(viewWithId: "hello").text()
         let content = try textView.string()
@@ -23,7 +23,7 @@ final class SwiftUITestingTests: XCTestCase {
     }
     
     func test_body_containsDarkModeToggle() throws {
-        let sut = ContentView()
+        let sut = ContentView(viewModel: .init())
         
         let toggle = try sut.inspect().find(viewWithId: ContentView.Identifiers.darkModeSwitch).toggle()
         XCTAssertEqual(
@@ -33,7 +33,7 @@ final class SwiftUITestingTests: XCTestCase {
     }
 
     func test_toggle_whenTapped_switchesToTrue() throws {
-        let sut = ContentView()
+        let sut = ContentView(viewModel: .init())
         
         let toggle = try sut.inspect().find(viewWithId: ContentView.Identifiers.darkModeSwitch).toggle()
         

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel: ViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -15,7 +17,7 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
                 .id("hello")
-            Toggle("Dark Mode", isOn: .constant(false))
+            Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
                 .id(ContentView.Identifiers.darkModeSwitch)
         }
         .padding()
@@ -28,6 +30,12 @@ extension ContentView {
     }
 }
 
+extension ContentView {
+    class ViewModel: ObservableObject {
+        @Published var isDarkModeEnabled = false
+    }
+}
+
 #Preview {
-    ContentView()
+    ContentView(viewModel: .init())
 }
