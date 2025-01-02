@@ -19,6 +19,12 @@ struct ContentView: View {
                 .id("hello")
             Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
                 .id(ContentView.Identifiers.darkModeSwitch)
+            if viewModel.isDarkModeEnabled {
+                Button("Add Details") {
+                    viewModel.isDarkModeEnabled.toggle()
+                }
+                .id(ContentView.Identifiers.addDetailsButton)
+            }
         }
         .padding()
     }

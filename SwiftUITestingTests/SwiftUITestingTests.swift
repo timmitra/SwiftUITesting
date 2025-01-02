@@ -56,6 +56,6 @@ final class SwiftUITestingTests: XCTestCase {
         
         let detailButton2 = try? sut.inspect().find(viewWithId: ContentView.Identifiers.addDetailsButton).button()
         
-        XCTAssertNil(detailButton2)
+        XCTAssertNotNil(detailButton2)
     }
 }
