@@ -11,7 +11,7 @@ import ViewInspector
 
 extension ContentView: @retroactive Inspectable {}
 
-final class SwiftUITestingTests: XCTestCase {
+class SwiftUITestingTests: XCTestCase {
 
     func testContentView() throws {
         
@@ -58,4 +58,30 @@ final class SwiftUITestingTests: XCTestCase {
         
         XCTAssertNotNil(detailButton2)
     }
+    
+    func test_addDetailsButton_whenTapped_invokeViewModel() throws {
+        let viewModel = TestableContentViewViewModel()
+        viewModel.addDetailsClosure = {}
+        let sut = ContentView(viewModel: viewModel)
+        
+        let toggle = try sut.inspect().find(viewWithId: ContentView.Identifiers.darkModeSwitch).toggle()
+        try toggle.tap()
+        
+        let detailButton = try? sut.inspect().find(viewWithId: ContentView.Identifiers.addDetailsButton).button()
+        
+        try detailButton?.tap()
+        
+        XCTAssertEqual(viewModel.addDetailsCount, 1)
+    }
 }
+
+class TestableContentViewViewModel: ContentView.ViewModel {
+    var addDetailsCount = 0
+    var addDetailsClosure: () -> () = { XCTFail("addDetailsClosure not set")}
+    
+    override func addDetails() {
+        addDetailsCount += 1
+        addDetailsClosure()
+    }
+}
+

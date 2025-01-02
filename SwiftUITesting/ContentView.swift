@@ -20,9 +20,7 @@ struct ContentView: View {
             Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
                 .id(ContentView.Identifiers.darkModeSwitch)
             if viewModel.isDarkModeEnabled {
-                Button("Add Details") {
-                    viewModel.isDarkModeEnabled.toggle()
-                }
+                Button(action: viewModel.addDetails, label: { Text("Add Details") })
                 .id(ContentView.Identifiers.addDetailsButton)
             }
         }
@@ -40,6 +38,8 @@ extension ContentView {
 extension ContentView {
     class ViewModel: ObservableObject {
         @Published var isDarkModeEnabled = false
+        
+        func addDetails() {}
     }
 }
 
