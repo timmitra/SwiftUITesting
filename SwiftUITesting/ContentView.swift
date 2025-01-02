@@ -27,6 +27,7 @@ struct ContentView: View {
 extension ContentView {
     enum Identifiers {
         static let darkModeSwitch = "darkModeSwitch"
+        static let addDetailsButton = "addDetailsButton"
     }
 }
 

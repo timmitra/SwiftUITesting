@@ -41,4 +41,21 @@ final class SwiftUITestingTests: XCTestCase {
         try toggle.tap()
         XCTAssertTrue(try toggle.isOn())
     }
+    
+    func test_addDetailsAppears_whenSwitchIsOn() throws {
+        
+        let viewModel = ContentView.ViewModel()
+        let sut = ContentView(viewModel: viewModel)
+        
+        let detailButton = try? sut.inspect().find(viewWithId: ContentView.Identifiers.addDetailsButton).button()
+        
+        XCTAssertNil(detailButton)
+        
+        let toggle = try sut.inspect().find(viewWithId: ContentView.Identifiers.darkModeSwitch).toggle()
+        try toggle.tap()
+        
+        let detailButton2 = try? sut.inspect().find(viewWithId: ContentView.Identifiers.addDetailsButton).button()
+        
+        XCTAssertNil(detailButton2)
+    }
 }
