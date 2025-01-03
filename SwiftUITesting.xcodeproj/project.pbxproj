@@ -138,7 +138,7 @@
 				};
 			};
 			buildConfigurationList = 2A4939322D25CD8600A09B62 /* Build configuration list for PBXProject "SwiftUITesting" */;
-			compatibilityVersion = "Xcode 15.3";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
