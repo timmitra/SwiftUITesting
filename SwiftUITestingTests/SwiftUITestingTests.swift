@@ -9,7 +9,7 @@ import XCTest
 import ViewInspector
 @testable import SwiftUITesting
 
-extension ContentView: @retroactive Inspectable {}
+extension ContentView: Inspectable {}
 
 class SwiftUITestingTests: XCTestCase {
 
